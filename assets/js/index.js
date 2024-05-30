@@ -1,26 +1,35 @@
 'use strict';
 
-// const form1v = document.getElementById('form');
-// console.dir(form1v);
+const {form} = document.forms;
+const {login} =form.elements;
 
-//прямый доступ до усих форм на сторинци
-const form2v = document.forms.form;
-console.dir(form2v);
-//прямий дступ до всих интерактивних елементив форми
-console.dir(form2v.elements);
-
-const {login, submit} = form2v.elements;
-// console.log(submit);
-// console.log(login);
-
-form2v.addEventListener('click', (event)=>{
-    // event.preventDefault();
-    console.log(event);
-    console.log(event.type);
+// click focus blur mouseenter mouseleave
+// keydown keyup keypress
+// ochange
+// paste copy cut 
+// select 
+login.addEventListener('keypress', (event)=>{
+  console.log('keypress');
+  console.log(event.key); //назву клавіші(символа) на який натисли
+  console.log(event.keyCode); //код клавіші(символа) на який натисли
+  console.log(event.target.value);
+  console.log(event.target.nextElementSibling);
+  if(event.keyCode === 13){
+    if(event.target.value.length >= 3){
+      event.target.nextElementSibling.disabled = false;
+    }
+  }
+})
+login.addEventListener('change', ({target})=>{
+  console.log('change');
+  console.log(target.value);
+  if(target.value.length >= 3){
+    target.nextElementSibling.disabled = false;
+  }
 })
 
-// 2 positions: "submit" and "reset"
-form2v.addEventListener('submit', (event)=>{
-    event.preventDefault();
-    console.log(event);
+// у елемента форми є 2 події:  submit  reset
+form.addEventListener('submit', (event)=>{
+  event.preventDefault();
+  console.dir(event.target);
 })
