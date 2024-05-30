@@ -2,16 +2,17 @@
 
 console.log('start')
 
-const btn = document.getElementById('btn');
+function numbers() {
+  let number = 1;
 
-btn.addEventListener('click', handlerBtn);
+  let interval = setInterval(() => {
+    console.log(number);
+    number++;
 
-function handlerBtn(event) {
-  let date;
-  for (let i = 0; i < 5; i++) {
-    date = new Date();
-    console.log(date.time());
-  }
+    if (number > 10) {
+      clearInterval(interval);
+    }
+  }, 500);
 }
 
-console.log('end')
+numbers()
