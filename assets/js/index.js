@@ -1,35 +1,17 @@
 'use strict';
 
-const {form} = document.forms;
-const {login} =form.elements;
+console.log('start')
 
-// click focus blur mouseenter mouseleave
-// keydown keyup keypress
-// ochange
-// paste copy cut 
-// select 
-login.addEventListener('keypress', (event)=>{
-  console.log('keypress');
-  console.log(event.key); //назву клавіші(символа) на який натисли
-  console.log(event.keyCode); //код клавіші(символа) на який натисли
-  console.log(event.target.value);
-  console.log(event.target.nextElementSibling);
-  if(event.keyCode === 13){
-    if(event.target.value.length >= 3){
-      event.target.nextElementSibling.disabled = false;
-    }
-  }
-})
-login.addEventListener('change', ({target})=>{
-  console.log('change');
-  console.log(target.value);
-  if(target.value.length >= 3){
-    target.nextElementSibling.disabled = false;
-  }
-})
+const btn = document.getElementById('btn');
 
-// у елемента форми є 2 події:  submit  reset
-form.addEventListener('submit', (event)=>{
-  event.preventDefault();
-  console.dir(event.target);
-})
+btn.addEventListener('click', handlerBtn);
+
+function handlerBtn(event) {
+  let date;
+  for (let i = 0; i < 5; i++) {
+    date = new Date();
+    console.log(date.time());
+  }
+}
+
+console.log('end')
